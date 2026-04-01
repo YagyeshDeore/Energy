@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Quality - Activesine</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header class="header glass">
+  <div class="logo">
+    <img src="logo.png" alt="Activesine Logo" class="logo-image">
+    <div>
+      <h2>Activesine Electricals</h2>
+      <span>Sign of Excellence</span>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="eqr.html">Quality Report</a>
+    <a href="quality.html">Power Factor</a>
+    <a href="consumption.html" class="active">Quality</a>
+    <a href="consumption-dashboard.html">Consumption Dashboard</a>
+    <a href="efficiency.html">Efficiency</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Energy Consumption Dashboard</h1>
+  <p class="subtitle">Weekly and monthly trends</p>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Bar Chart - Weekly</h3>
+      <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Pie Chart - Sources</h3>
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  // Add chart data for consumption page
+  document.addEventListener('DOMContentLoaded', function() {
+    const barCtx = document.getElementById('barChart');
+    if (barCtx) {
+      new Chart(barCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          datasets: [{ label: 'kWh', data: [120, 150, 180, 160, 140, 130, 170], backgroundColor: '#22c55e' }]
+        },
+        options: { scales: { y: { beginAtZero: true } } }
+      });
+    }
+
+    const pieCtx = document.getElementById('pieChart');
+    if (pieCtx) {
+      new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+          labels: ['Grid', 'Solar', 'Generator'],
+          datasets: [{ data: [65, 25, 10], backgroundColor: ['#3b82f6', '#22c55e', '#eab308'] }]
+        },
+        options: { plugins: { legend: { position: 'bottom' } } }
+      });
+    }
+  });
+</script>
+</body>
+</html>

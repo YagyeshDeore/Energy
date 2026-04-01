@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Efficiency - Activesine</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header class="header glass">
+  <div class="logo">
+    <img src="logo.png" alt="Activesine Logo" class="logo-image">
+    <div>
+      <h2>Activesine Electricals</h2>
+      <span>Sign of Excellence</span>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="eqr.html">Quality Report</a>
+    <a href="quality.html">Power Factor</a>
+    <a href="consumption.html">Quality</a>
+    <a href="consumption-dashboard.html">Consumption Dashboard</a>
+    <a href="efficiency.html" class="active">Efficiency</a>
+  </nav>
+</header>
+
+<section class="container">
+  <h1>Energy Efficiency Dashboard</h1>
+  <p class="subtitle">System performance and optimization metrics</p>
+
+  <div class="grid">
+    
+    <!-- EFFICIENCY GAUGE ROW -->
+    <div class="card span-3">
+      <div class="gauge-card efficiency-gauge">
+        <div class="gauge" data-value="87"></div>
+        <h2>87%</h2>
+        <span>Overall Efficiency</span>
+      </div>
+    </div>
+
+    <div class="card span-3">
+      <div class="gauge-card">
+        <div class="gauge green-g" data-value="92"></div>
+        <h2>92%</h2>
+        <span>Chiller COP</span>
+      </div>
+    </div>
+
+    <div class="card span-3">
+      <div class="gauge-card">
+        <div class="gauge blue-g" data-value="78"></div>
+        <h2>78%</h2>
+        <span>Power Factor</span>
+      </div>
+    </div>
+
+    <div class="card span-3">
+      <h3>Monthly Efficiency Trend</h3>
+      <canvas id="efficiencyTrend"></canvas>
+    </div>
+
+    <!-- RECOMMENDATIONS -->
+    <div class="card span-9">
+      <h3>Optimization Recommendations</h3>
+      <div class="recommendations-grid">
+        <div class="recommendation-card priority-high">
+          <div class="rec-header">
+            <span class="rec-icon">⚡</span>
+            <span class="rec-priority">High</span>
+          </div>
+          <h4>Chiller VFD Tuning</h4>
+          <p>Adjust variable frequency drives for optimal part-load performance. Expected 8-12% savings.</p>
+          <div class="rec-impact">
+            <span>Potential Savings: 15kWh/day</span>
+            <button class="btn-primary">Schedule</button>
+          </div>
+        </div>
+
+        <div class="recommendation-card priority-medium">
+          <div class="rec-header">
+            <span class="rec-icon">💡</span>
+            <span class="rec-priority">Medium</span>
+          </div>
+          <h4>LED Lighting Retrofit</h4>
+          <p>Replace remaining fluorescent fixtures with LED equivalents. ROI: 18 months.</p>
+          <div class="rec-impact">
+            <span>Potential Savings: 8kWh/day</span>
+            <button class="btn-secondary">Plan</button>
+          </div>
+        </div>
+
+        <div class="recommendation-card priority-low">
+          <div class="rec-header">
+            <span class="rec-icon">🔧</span>
+            <span class="rec-priority">Low</span>
+          </div>
+          <h4>Insulation Audit</h4>
+          <p>Review pipe and duct insulation conditions for potential improvements.</p>
+          <div class="rec-impact">
+            <span>Potential Savings: 3kWh/day</span>
+            <button class="btn-outline">Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Efficiency trend chart
+  const trendCtx = document.getElementById('efficiencyTrend');
+  if (trendCtx) {
+    new Chart(trendCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: 'Efficiency %',
+          data: [82, 84, 86, 87, 88],
+          borderColor: '#10b981',
+          backgroundColor: 'rgba(16, 185, 129, 0.1)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: { y: { min: 75, max: 95, ticks: { stepSize: 5 } } }
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>

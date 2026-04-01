@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energy Consumption Dashboard - Activesine</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header class="header glass">
+    <div class="logo">
+      <img src="logo.png" alt="Activesine Logo" class="logo-image">
+      <div>
+        <h2>Activesine Electricals</h2>
+        <span>Sign of Excellence</span>
+      </div>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="eqr.html">Quality Report</a>
+      <a href="quality.html">Power Factor</a>
+      <a href="consumption.html">Quality</a>
+      <a href="consumption-dashboard.html" class="active">Consumption Dashboard</a>
+      <a href="efficiency.html">Efficiency</a>
+    </nav>
+    <div class="header-controls">
+      <select class="dropdown">
+        <option>Facility: All Areas</option>
+        <option>Facility: Floor 1</option>
+        <option>Facility: Floor 2</option>
+      </select>
+      <select class="dropdown">
+        <option>Equipment: All Systems</option>
+        <option>Equipment: Chillers</option>
+        <option>Equipment: AHU</option>
+      </select>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <!-- TOP SECTION -->
+    <div class="grid-row">
+      <!-- KPI 1 -->
+      <section class="card kpi-card span-3">
+        <div class="kpi-content">
+          <h3>Total Consumption</h3>
+          <div class="kpi-value">5,420 kWh</div>
+          <div class="kpi-indicator positive">↑ 12%</div>
+        </div>
+      </section>
+
+      <!-- KPI 2 -->
+      <section class="card kpi-card span-3">
+        <div class="kpi-content">
+          <h3>Apparent Energy</h3>
+          <div class="kpi-value">6,150 kVAh</div>
+          <div class="kpi-indicator positive">↑ 9%</div>
+        </div>
+      </section>
+
+      <!-- MAIN CHART -->
+      <section class="card chart-card span-6">
+        <div class="card-header">
+          <h3>Energy Trends</h3>
+          <div class="chart-tabs">
+            <span class="tab active">Today</span>
+            <span class="tab">Last 7 Days</span>
+            <span class="tab">Last 30 Days</span>
+          </div>
+        </div>
+        <canvas id="mainChart"></canvas>
+      </section>
+    </div>
+
+    <!-- MIDDLE SECTION -->
+    <div class="grid-row">
+      <!-- LEFT: Category Consumption -->
+      <section class="card span-4">
+        <h3>Consumption by Category</h3>
+        <div class="category-list">
+          <div class="category-item">
+            <div>Chiller</div>
+            <div class="category-value">1250 kWh</div>
+            <div class="category-pct">23%</div>
+            <div class="dual-progress">
+              <div class="progress-bar green" style="width: 23%"></div>
+              <div class="progress-bar blue" style="width: 18%"></div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div>AHU</div>
+            <div class="category-value">980 kWh</div>
+            <div class="category-pct">18%</div>
+            <div class="dual-progress">
+              <div class="progress-bar green" style="width: 18%"></div>
+              <div class="progress-bar blue" style="width: 15%"></div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div>Lighting</div>
+            <div class="category-value">860 kWh</div>
+            <div class="category-pct">16%</div>
+            <div class="dual-progress">
+              <div class="progress-bar green" style="width: 16%"></div>
+              <div class="progress-bar blue" style="width: 13%"></div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div>Small Power</div>
+            <div class="category-value">720 kWh</div>
+            <div class="category-pct">13%</div>
+            <div class="dual-progress">
+              <div class="progress-bar green" style="width: 13%"></div>
+              <div class="progress-bar blue" style="width: 11%"></div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div>Kitchen</div>
+            <div class="category-value">590 kWh</div>
+            <div class="category-pct">11%</div>
+            <div class="dual-progress">
+              <div class="progress-bar green" style="width: 11%"></div>
+              <div class="progress-bar blue" style="width: 8%"></div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div>Laundry</div>
+            <div class="category-value">410 kWh</div>
+            <div class="category-pct">8%</div>
+            <div class="dual-progress">
+              <div class="progress-bar green" style="width: 8%"></div>
+              <div class="progress-bar blue" style="width: 11%"></div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div>Floor-01</div>
+            <div class="category-value">820 kWh</div>
+            <div class="category-pct">15%</div>
+            <div class="dual-progress">
+              <div class="progress-bar green" style="width: 15%"></div>
+              <div class="progress-bar blue" style="width: 19%"></div>
+            </div>
+          </div>
+          <div class="category-item">
+            <div>Floor-02</div>
+            <div class="category-value">590 kWh</div>
+            <div class="category-pct">11%</div>
+            <div class="dual-progress">
+              <div class="progress-bar green" style="width: 11%"></div>
+              <div class="progress-bar blue" style="width: 19%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CENTER: Donut Chart -->
+      <section class="card span-4">
+        <h3>Category Distribution</h3>
+        <div class="chart-container">
+          <canvas id="donutChart"></canvas>
+        </div>
+      </section>
+
+      <!-- RIGHT: Floor Comparison -->
+      <section class="card span-4">
+        <h3>Floor Comparison</h3>
+        <div class="floor-comparison">
+          <div class="floor-item">
+            <div class="floor-label">Floor-01</div>
+            <div class="floor-value">820 kWh</div>
+            <div class="floor-bars">
+              <div class="bar blue" style="width: 68%"></div>
+              <div class="bar green" style="width: 82%"></div>
+            </div>
+          </div>
+          <div class="floor-item">
+            <div class="floor-label">Floor-02</div>
+            <div class="floor-value">590 kWh</div>
+            <div class="floor-bars">
+              <div class="bar blue" style="width: 49%"></div>
+              <div class="bar green" style="width: 59%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- BOTTOM TABS -->
+    <div class="bottom-tabs">
+      <span class="tab">Today</span>
+      <span class="tab active">Last 7 Days</span>
+      <span class="tab">Last 30 Days</span>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Consumption dashboard specific charts
+    document.addEventListener('DOMContentLoaded', function() {
+      // Main line chart
+      const mainCtx = document.getElementById('mainChart');
+      if (mainCtx) {
+        new Chart(mainCtx, {
+          type: 'line',
+          data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+              label: 'kWh',
+              data: [4500, 4800, 5100, 5420, 5300, 5200, 5420],
+              borderColor: '#22c55e',
+              backgroundColor: 'rgba(34, 197, 94, 0.1)',
+              tension: 0.4,
+              fill: true,
+              borderWidth: 3
+            }, {
+              label: 'kVAh',
+              data: [5100, 5400, 5700, 6150, 5900, 5800, 6150],
+              borderColor: '#3b82f6',
+              backgroundColor: 'rgba(59, 130, 246, 0.1)',
+              tension: 0.4,
+              fill: true,
+              borderWidth: 3
+            }]
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: false } }
+          }
+        });
+      }
+
+      // Donut chart
+      const donutCtx = document.getElementById('donutChart');
+      if (donutCtx) {
+        new Chart(donutCtx, {
+          type: 'doughnut',
+          data: {
+            labels: ['Chiller', 'AHU', 'Lighting', 'Small Power', 'Kitchen', 'Laundry', 'Floor-01', 'Floor-02'],
+            datasets: [{
+              data: [23, 18, 16, 13, 11, 8, 15, 11],
+              backgroundColor: [
+                '#22c55e', '#16a34a', '#4ade80', '#3b82f6', 
+                '#1d4ed8', '#3b82f6', '#eab308', '#f59e0b'
+              ],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            plugins: { legend: { position: 'bottom' } },
+            cutout: '60%'
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

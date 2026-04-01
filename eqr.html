@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Quality Report</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header glass">
+  <div class="logo">
+    <img src="logo.png" alt="Activesine Logo" class="logo-image">
+    <div>
+      <h2>Activesine Electricals</h2>
+      <span>Sign of Excellence</span>
+    </div>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="eqr.html" class="active">Quality Report</a>
+    <a href="quality.html">Power Factor</a>
+    <a href="consumption.html">Quality</a>
+    <a href="consumption-dashboard.html">Consumption Dashboard</a>
+    <a href="efficiency.html">Efficiency</a>
+  </nav>
+</header>
+
+<section class="eqr-container">
+
+  <h1>Energy Quality Report</h1>
+  <p class="subtitle">Demo Thesis 1</p>
+
+  <div class="legend">
+    <span class="dot green"></span> Healthy
+    <span class="dot blue"></span> Risky
+    <span class="dot red"></span> Unhealthy
+  </div>
+
+  <div class="eqr-grid">
+
+    <!-- CARD 1 -->
+    <div class="eqr-card">
+      <h3>Voltage Fluctuation</h3>
+      <div class="gauge" data-value="18"></div>
+      <h2>1.8%</h2>
+      <p>Low Variance</p>
+      <button>What Should I Do?</button>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="eqr-card">
+      <h3>Voltage Harmonics</h3>
+      <div class="gauge blue-g" data-value="65"></div>
+      <h2>6.5%</h2>
+      <p>Moderate Distortion</p>
+      <button>What Should I Do?</button>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="eqr-card">
+      <h3>Current Harmonics</h3>
+      <div class="gauge red-g" data-value="124"></div>
+      <h2>12.4%</h2>
+      <p>High Distortion</p>
+      <button>What Should I Do?</button>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="eqr-card">
+      <h3>Generator Demand</h3>
+      <div class="gauge" data-value="67"></div>
+      <h2>67%</h2>
+      <p>Optimal Load</p>
+      <button>What Should I Do?</button>
+    </div>
+
+  </div>
+
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

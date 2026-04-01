@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Power Factor - Activesine</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header glass">
+  <div class="logo">
+    <img src="logo.png" alt="Activesine Logo" class="logo-image">
+    <div>
+      <h2>Activesine Electricals</h2>
+      <span>Sign of Excellence</span>
+    </div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="eqr.html">Quality Report</a>
+    <a href="quality.html" class="active">Power Factor</a>
+    <a href="consumption.html">Quality</a>
+    <a href="consumption-dashboard.html">Consumption Dashboard</a>
+    <a href="efficiency.html">Efficiency</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Power Factor Analysis</h1>
+  <p class="subtitle">Real-time monitoring and recommendations</p>
+
+  <div class="grid">
+    <div class="eqr-card">
+      <h3>Voltage Fluctuation</h3>
+      <div class="gauge" data-value="18"></div>
+      <h2>1.8%</h2>
+      <p>Low Variance ✓</p>
+    </div>
+
+    <div class="eqr-card">
+      <h3>Voltage Harmonics</h3>
+      <div class="gauge blue-g" data-value="65"></div>
+      <h2>6.5%</h2>
+      <p>Moderate Distortion ⚠️</p>
+    </div>
+
+    <div class="eqr-card">
+      <h3>Current Harmonics</h3>
+      <div class="gauge red-g" data-value="124"></div>
+      <h2>12.4%</h2>
+      <p>High Distortion ❌</p>
+    </div>
+
+    <div class="eqr-card">
+      <h3>Generator Load</h3>
+      <div class="gauge" data-value="67"></div>
+      <h2>67%</h2>
+      <p>Optimal Load ✓</p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Activesine Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+
+<header class="header glass">
+  <div class="logo">
+    <img src="logo.png" alt="Activesine Logo" class="logo-image">
+    <div>
+      <h2>Activesine Electricals</h2>
+      <span>Sign of Excellence</span>
+    </div>
+  </div>
+
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="eqr.html">Quality Report</a>
+    <a href="quality.html">Power Factor</a>
+    <a href="consumption.html">Quality</a>
+    <a href="consumption-dashboard.html">Consumption Dashboard</a>
+    <a href="efficiency.html">Efficiency</a>
+  </nav>
+</header>
+
+<main class="dashboard">
+
+  <!-- MAP -->
+  <section class="card span-5">
+    <div class="card-header">
+      <h3>Live Map</h3>
+      <select>
+        <option>Reussence</option>
+        <option>Bangalore</option>
+      </select>
+    </div>
+    <div id="map"></div>
+  </section>
+
+  <!-- SMALL CHART -->
+  <section class="card span-3">
+    <canvas id="weeklyChart"></canvas>
+  </section>
+
+  <!-- ENERGY -->
+  <section class="card span-4">
+    <div class="card-header">
+      <h3>Energy Consumption</h3>
+      <div class="tabs">
+        <span class="active">All</span>
+        <span>Days</span>
+        <span>Daily</span>
+      </div>
+    </div>
+    <canvas id="energyChart"></canvas>
+  </section>
+
+  <!-- ENHANCED ACTION LIST -->
+  <section class="card span-4">
+    <h3>Action Items</h3>
+    <div class="action-list">
+      <div class="action-item" onclick="alert('Navigate to maintenance schedule')">
+        <div class="action-icon maintenance">🛠️</div>
+        <div class="action-content">
+          <div class="action-title">Maintenance Reminder</div>
+          <div class="action-time">HVAC Unit #3 - Filter replacement</div>
+        </div>
+        <div class="badge">2 min ago</div>
+      </div>
+      <div class="action-item" onclick="alert('View efficiency report')">
+        <div class="action-icon efficiency">⚡</div>
+        <div class="action-content">
+          <div class="action-title">Efficiency Suggestions</div>
+          <div class="action-time">Chiller optimization opportunity</div>
+        </div>
+        <div class="badge">10 min ago</div>
+      </div>
+      <div class="action-item" onclick="alert('High voltage mitigation steps')">
+        <div class="action-icon alert">⚠️</div>
+        <div class="action-content">
+          <div class="action-title">High Voltage Alert</div>
+          <div class="action-time">Grid substation anomaly detected</div>
+        </div>
+        <div class="badge urgent">1 hr ago</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAUGE -->
+  <section class="card span-2 gauge-card">
+    <div class="gauge" data-value="36"></div>
+    <h2>36.0</h2>
+    <span>Power</span>
+  </section>
+
+  <!-- BATTERY -->
+  <section class="card span-2">
+    <h3>Maintenance Status</h3>
+    <div class="battery-group">
+      <div class="battery green"></div>
+      <div class="battery blue"></div>
+      <div class="battery gray"></div>
+      <div class="battery green"></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
